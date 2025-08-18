@@ -13,6 +13,7 @@ namespace Chat_Perassi_Ruffinengo
         {
             InitializeComponent();
         }
+
         private Socket conexion;
         private Thread lecturaThread; // thread = hilo. 
         private NetworkStream socketStream; // stream cadena de datos
@@ -20,11 +21,39 @@ namespace Chat_Perassi_Ruffinengo
         private BinaryReader lector;
 
         // _load el _ indica que es un evento
-        private void ServidorChatForm_Load( object sender, EventArgs e)
+        private void ServidorChatForm_Load(object sender, EventArgs e)
         {
             //lecturaThread = new Thread(new ThreadStart( EjecutarServidor ));
-            lecturaThread.Start();
+            //lecturaThread.Start();
         }
+
+        //hoy 18/8
+        //este evento se ejecuta desde que se hace el click de cerrar hasta que se termina de cerrar el form
+        private void ServidorChatForm_FormClosing(object sander,
+            FormClosingEventArgs e)
+        {
+            System.Environment.Exit(System.Environment.ExitCode);
+        }
+
+        //delegate 
+        //es un metodo creado por mi
+        private delegate void DisplayDelegate(string mensaje);
+        private void MostrarMensaje(string mensaje)
+        {
+            if (mostrarTextbox.InvokeRequired)
+            {
+
+                Invoke(new DisplayDelegate(MostrarMensaje),
+                    new object[] { mensaje });
+            }
+            else
+                mostrarTextbox.Text += mensaje;
+        }
+
+
+        //
+        //private delegate void DisableInputDelegate(bool value);
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
