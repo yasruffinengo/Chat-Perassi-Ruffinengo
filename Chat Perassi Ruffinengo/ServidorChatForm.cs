@@ -52,32 +52,172 @@ namespace Chat_Perassi_Ruffinengo
 
 
         //
-        //private delegate void DisableInputDelegate(bool value);
+        private delegate void DisableInputDelegate(bool value);
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+
+
+        // continuar desde la linea 57
+
+        // delegado que permite llamar al metodo DeshabilitarSalida
+        //en el subprofeso crea y mantiene la GUI
+
+        private void DeshabilitarEntrada(bool valor)
+        //si la modificacion de entrarTextBox no es segura para el subproceso
         {
+            if (entradaTextbox.InvokeRequired)
 
-        }
-
-        private void button1_Click_Click(object sender, EventArgs e)
-        {
-            mostrarTextbox.Text = entradaTextbox.Text.ToUpper();
-            label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (mostrarTextbox.Text == "hola")
             {
-                label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-            }
+                //usa el metodo heredado Invoke para ejecutar DeshabilitandoEntrada 
+                //a traves de un delegado
 
-        }
+                Invoke(new DisableInputDelegate(DeshabilitarEntrada),
 
-        private void Form1_Load(object sender, EventArgs e)
+                   new object[] { valor });
+            } // fin de if
+
+            else
+                // Se puede modificar entradaTextBox en el subproceso actual
+                entradaTextbox.ReadOnly = valor;
+        } // fin del metodo DeshabilitarEntrada
+
+        //envia al cliente el texto escrito en el servidor
+
+        private void entradaTextBox_KeyDown(object sender, KeyEventArgs e)
+
         {
+            try
+            {
+                if (e.KeyCode == Keys.Enter && entradaTextbox.ReadOnly == false)
+                {
 
-        }
+                    escritor.Write("SERVIDOR>>> " + entradaTextbox.Text);
+                    mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox_KeyDown();
+
+                    //SI EL USUARIO EN EL SERVIDOR INDICO LA TERMINACION
+                    //DE LA CONEXION CON EL CLIENTE
+                    if (entradaTextbox.Text == "TERMINAR")
+                        conexion.Close();
+
+                    entradaTextbox.Clear(); // borra la entrada del usuario
+                } // fin de if
+            }// fin de try
+            catch (SocketException)
+            {
+                mostrarTextbox.Text += "\nError al escribir objeto";
+            } //fin de catch
+        }//fin del metodo entradaTextBox_KeyDown
+
+        //permite que el cliente se conecte; muestra el texto que envia el cliente
+
+        public void EjecutarServidor()
+        {
+            TcpListener oyente;
+            int contador = 1;
+
+            //espera la conexion de un cliente y muestra el texto
+            // que envia el cliente
+            try
+            {
+                //Paso 1: crea TcpListener
+                IPAddress local = IPAddress.Parse("127.0.0.1");
+                oyente = new TcpListener(local, 50000);
+                //Paso 2: TcpListener espera la solicitud de conexion
+                oyente.Start();
+                //Paso 3: establece la conexion con la base en la solicitud del cliente
+                while (true)
+                {
+                    MostrarMensaje("Esperando una conexion\r\n");
+                    //acepta una conexion entrante
+                    conexion = oyente.AcceptSocket();
+                    //crea un objeto para transferir datos a traves de un flujo
+                    escritor = new BinaryWriter(socketStream);
+                    lector = mew BinaryReader( socketStream);
+
+                    MostrarMensaje( "conexion " + contador + "recibida.\r\n");
+
+                    //HASTAAAAAAAA LA 137
+                }
+
+
+
+                //25 de agosto -------------------
+
+                //informa al cliente que la conexion fue exitosa 
+                escritor.Write("SERVIDOR>>> Conexion exitosa");
+
+                //140
+
+                DeshabilitarEntrada(false); //habilita entradaTextBox
+
+                string laRespuesta = "";
+
+                // Paso 4: lee los datos de cadena que envìa el cliente
+                do
+
+                {
+                    try
+                    {
+                        //lee la cadena que se envia al cliente
+                        laRespuesta = lector.ReadString();
+                        //muestra el mensaje
+                        MostrarMensaje("\r\n" + laRespuesta);
+                    } // fin de try
+
+                    //155
+
+                    catch (Exception)
+
+                    {
+
+                        // maneja la excepcion si hay error al leer los datos
+                        break;
+                    } // fin de catch
+                } while (laRespuesta != "CLIENTE>>> TERMINAR" &&
+                conexion.Connected);
+
+                MostrarMensaje("\r\nE1 usuario termino la conexion\r\n");
+
+                // Paso 5: cierra la conexion
+                escritor.Close();
+                lector.Close();
+                socketStream.Close();
+                conexion.Close();
+
+                //171
+
+                DeshabilitarEntrada(true); // deshabilita entradaTextBox
+                contador++;
+            } // fin de while
+} // fin de try
+
+catch( Exception error)
+    {
+        MessageBox.Show( error.Tostring() );
     }
 }
+
+    //private void textBox1_TextChanged(object sender, EventArgs e)
+    //    {
+
+    //    }
+
+    //    private void button1_Click_Click(object sender, EventArgs e)
+    //    {
+    //        mostrarTextbox.Text = entradaTextbox.Text.ToUpper();
+    //        label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
+    //    }
+
+    //    private void button1_Click_1(object sender, EventArgs e)
+    //    {
+    //        if (mostrarTextbox.Text == "hola")
+    //        {
+    //            label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
+    //        }
+
+    //    }
+
+    //    private void Form1_Load(object sender, EventArgs e)
+    //    {
+
+    //    }
