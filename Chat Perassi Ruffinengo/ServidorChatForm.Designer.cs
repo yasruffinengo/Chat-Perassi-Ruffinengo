@@ -41,19 +41,18 @@ namespace Chat_Perassi_Ruffinengo
             this.mostrarTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mostrarTextbox.Location = new System.Drawing.Point(58, 237);
+            this.mostrarTextbox.Location = new System.Drawing.Point(58, 41);
             this.mostrarTextbox.Multiline = true;
             this.mostrarTextbox.Name = "mostrarTextbox";
-            this.mostrarTextbox.Size = new System.Drawing.Size(252, 23);
+            this.mostrarTextbox.Size = new System.Drawing.Size(252, 91);
             this.mostrarTextbox.TabIndex = 1;
-            this.mostrarTextbox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // entradaTextbox
             // 
             this.entradaTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.entradaTextbox.Location = new System.Drawing.Point(58, 53);
+            this.entradaTextbox.Location = new System.Drawing.Point(58, 174);
             this.entradaTextbox.Multiline = true;
             this.entradaTextbox.Name = "entradaTextbox";
             this.entradaTextbox.Size = new System.Drawing.Size(252, 111);
@@ -70,7 +69,6 @@ namespace Chat_Perassi_Ruffinengo
             this.button1_Click.TabIndex = 2;
             this.button1_Click.Text = "button1";
             this.button1_Click.UseVisualStyleBackColor = true;
-            this.button1_Click.Click += new System.EventHandler(this.button1_Click_Click);
             // 
             // label1
             // 
@@ -95,7 +93,6 @@ namespace Chat_Perassi_Ruffinengo
             this.button2.TabIndex = 4;
             this.button2.Text = "button1";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // ServidorChatForm
             // 

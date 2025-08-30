@@ -23,8 +23,8 @@ namespace Chat_Perassi_Ruffinengo
         // _load el _ indica que es un evento
         private void ServidorChatForm_Load(object sender, EventArgs e)
         {
-            //lecturaThread = new Thread(new ThreadStart( EjecutarServidor ));
-            //lecturaThread.Start();
+            lecturaThread = new Thread(new ThreadStart( EjecutarServidor ));
+            lecturaThread.Start();
         }
 
         //hoy 18/8
@@ -51,16 +51,8 @@ namespace Chat_Perassi_Ruffinengo
         }
 
 
-        //
+        //606060
         private delegate void DisableInputDelegate(bool value);
-
-
-
-
-        // continuar desde la linea 57
-
-        // delegado que permite llamar al metodo DeshabilitarSalida
-        //en el subprofeso crea y mantiene la GUI
 
         private void DeshabilitarEntrada(bool valor)
         //si la modificacion de entrarTextBox no es segura para el subproceso
@@ -82,7 +74,7 @@ namespace Chat_Perassi_Ruffinengo
         } // fin del metodo DeshabilitarEntrada
 
         //envia al cliente el texto escrito en el servidor
-
+        //79
         private void entradaTextBox_KeyDown(object sender, KeyEventArgs e)
 
         {
@@ -92,7 +84,7 @@ namespace Chat_Perassi_Ruffinengo
                 {
 
                     escritor.Write("SERVIDOR>>> " + entradaTextbox.Text);
-                    mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox_KeyDown();
+                    mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox.Text;
 
                     //SI EL USUARIO EN EL SERVIDOR INDICO LA TERMINACION
                     //DE LA CONEXION CON EL CLIENTE
@@ -109,7 +101,7 @@ namespace Chat_Perassi_Ruffinengo
         }//fin del metodo entradaTextBox_KeyDown
 
         //permite que el cliente se conecte; muestra el texto que envia el cliente
-
+        //104
         public void EjecutarServidor()
         {
             TcpListener oyente;
@@ -132,9 +124,9 @@ namespace Chat_Perassi_Ruffinengo
                     conexion = oyente.AcceptSocket();
                     //crea un objeto para transferir datos a traves de un flujo
                     escritor = new BinaryWriter(socketStream);
-                    lector = mew BinaryReader( socketStream);
+                    lector = new BinaryReader(socketStream);
 
-                    MostrarMensaje( "conexion " + contador + "recibida.\r\n");
+                    MostrarMensaje("conexion " + contador + "recibida.\r\n");
 
                     //HASTAAAAAAAA LA 137
                 }
@@ -189,35 +181,39 @@ namespace Chat_Perassi_Ruffinengo
                 DeshabilitarEntrada(true); // deshabilita entradaTextBox
                 contador++;
             } // fin de while
-} // fin de try
 
-catch( Exception error)
-    {
-        MessageBox.Show( error.Tostring() );
+
+            catch (Exception error)
+            {
+                MessageBox.Show(error.ToString());
+            }
+
+            //private void textBox1_TextChanged(object sender, EventArgs e)
+            //    {
+
+            //    }
+
+            //    private void button1_Click_Click(object sender, EventArgs e)
+            //    {
+            //        mostrarTextbox.Text = entradaTextbox.Text.ToUpper();
+            //        label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
+            //    }
+
+            //    private void button1_Click_1(object sender, EventArgs e)
+            //    {
+            //        if (mostrarTextbox.Text == "hola")
+            //        {
+            //            label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
+            //        }
+
+            //    }
+
+            //    private void Form1_Load(object sender, EventArgs e)
+            //    {
+
+            //    }
+        }
+
     }
 }
 
-    //private void textBox1_TextChanged(object sender, EventArgs e)
-    //    {
-
-    //    }
-
-    //    private void button1_Click_Click(object sender, EventArgs e)
-    //    {
-    //        mostrarTextbox.Text = entradaTextbox.Text.ToUpper();
-    //        label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-    //    }
-
-    //    private void button1_Click_1(object sender, EventArgs e)
-    //    {
-    //        if (mostrarTextbox.Text == "hola")
-    //        {
-    //            label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-    //        }
-
-    //    }
-
-    //    private void Form1_Load(object sender, EventArgs e)
-    //    {
-
-    //    }
