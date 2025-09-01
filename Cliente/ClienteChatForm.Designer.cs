@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Threading;
-using System.Net.Sockets;
-using System.IO;
+
 
 namespace Cliente
 {
-    partial class Form1 : Form
+    partial class ClienteChatForm : Form
     {
-        public Form1()
+        public ClienteChatForm()
         {
             InitializeComponent();
         }
 
-        private NetworkStream salida; //flujo para recibir datos
-
-        ////hasta aqui hoy es viernes 29/ñoquis
 
         /// <summary>
         ///  Required designer variable.
@@ -69,15 +64,16 @@ namespace Cliente
             this.mostrarTextbox.Size = new System.Drawing.Size(252, 91);
             this.mostrarTextbox.TabIndex = 3;
             // 
-            // Form1
+            // ClienteChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.entradaTextbox);
             this.Controls.Add(this.mostrarTextbox);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ClienteChatForm";
+            this.Text = "Cliente";
+            this.Load += new System.EventHandler(this.ClienteChatForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

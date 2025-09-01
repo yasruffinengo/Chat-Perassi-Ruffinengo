@@ -7,4 +7,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Chat Perassi Ruffinengo\Chat Perassi Ruffinengo.csproj" />
+  </ItemGroup>
+
 </Project>
