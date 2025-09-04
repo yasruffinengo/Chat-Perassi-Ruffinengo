@@ -87,11 +87,47 @@ namespace Cliente
             TcpClient cliente;
             //crea instancia de TcpClient para enviar datos al servidor 
             /////////quedamos aca. pag 13 linea 103
- 
+            try
+            {
+                MostrarMensaje("Tratando de conectar\r\n");
+                cliente = new TcpClient();
+                cliente.Connect("127.0.0.1", 5000);
+
+                salida = cliente.GetStream();
+
+                escritor = new BinaryWriter(salida);
+                lector = new BinaryReader(salida);
+
+                MostrarMensaje("\r\nSe recibieron flujos de E/S\r\n");
+                DeshabilitarSalida(false);
+
+                do
+                {
+                    try
+                    {
+                        //lee el mensaje del servidor
+                        mensaje = lector.ReadString();
+                        MostrarMensaje("\r\n" + mensaje);
+
+                    }
+                    catch (Exception)
+                    {
+                        System.Environment.Exit(System.Environment.ExitCode);
+                    }
+                } while (mensaje != "SERVIDOR>>> TERMINAR ");
+
+                escritor.Close();
+                lector.Close();
+                salida.Close();
+                cliente.Close();
+                Application.Exit();
+            }
+            catch (Exception error )
+            {
+                MessageBox.Show(error.ToString(), "Error en la conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Environment.Exit(System.Environment.ExitCode);
+            }
         }
-
     }
-
-
 }
-}
+
