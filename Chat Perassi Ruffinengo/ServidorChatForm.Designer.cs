@@ -57,6 +57,7 @@ namespace Chat_Perassi_Ruffinengo
             this.entradaTextbox.Name = "entradaTextbox";
             this.entradaTextbox.Size = new System.Drawing.Size(252, 111);
             this.entradaTextbox.TabIndex = 0;
+            this.entradaTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entradaTextBox_KeyDown);
             // 
             // button1_Click
             // 

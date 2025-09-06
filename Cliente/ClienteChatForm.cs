@@ -91,7 +91,7 @@ namespace Cliente
             {
                 MostrarMensaje("Tratando de conectar\r\n");
                 cliente = new TcpClient();
-                cliente.Connect("127.0.0.1", 5000);
+                cliente.Connect("127.0.0.1", 50000);
 
                 salida = cliente.GetStream();
 

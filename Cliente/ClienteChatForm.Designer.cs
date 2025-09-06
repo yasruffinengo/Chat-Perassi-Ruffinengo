@@ -47,21 +47,22 @@ namespace Cliente
             this.entradaTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.entradaTextbox.Location = new System.Drawing.Point(96, 229);
+            this.entradaTextbox.Location = new System.Drawing.Point(109, 212);
             this.entradaTextbox.Multiline = true;
             this.entradaTextbox.Name = "entradaTextbox";
-            this.entradaTextbox.Size = new System.Drawing.Size(252, 111);
+            this.entradaTextbox.Size = new System.Drawing.Size(654, 63);
             this.entradaTextbox.TabIndex = 2;
+            this.entradaTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entradaTextBox_KeyDown);
             // 
             // mostrarTextbox
             // 
             this.mostrarTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mostrarTextbox.Location = new System.Drawing.Point(96, 96);
+            this.mostrarTextbox.Location = new System.Drawing.Point(96, 34);
             this.mostrarTextbox.Multiline = true;
             this.mostrarTextbox.Name = "mostrarTextbox";
-            this.mostrarTextbox.Size = new System.Drawing.Size(252, 91);
+            this.mostrarTextbox.Size = new System.Drawing.Size(667, 161);
             this.mostrarTextbox.TabIndex = 3;
             // 
             // ClienteChatForm
@@ -73,6 +74,7 @@ namespace Cliente
             this.Controls.Add(this.mostrarTextbox);
             this.Name = "ClienteChatForm";
             this.Text = "Cliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClienteChatForm_FormClosing);
             this.Load += new System.EventHandler(this.ClienteChatForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

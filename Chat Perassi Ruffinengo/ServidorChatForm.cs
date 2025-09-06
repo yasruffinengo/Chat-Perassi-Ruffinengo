@@ -123,65 +123,70 @@ namespace Chat_Perassi_Ruffinengo
                     //acepta una conexion entrante
                     conexion = oyente.AcceptSocket();
                     //crea un objeto para transferir datos a traves de un flujo
+
+                    socketStream = new NetworkStream(conexion);
                     escritor = new BinaryWriter(socketStream);
                     lector = new BinaryReader(socketStream);
 
                     MostrarMensaje("conexion " + contador + "recibida.\r\n");
+                    //    escritor.Write("SERVIDOR>>> Conexion exitosa");
 
-                    //HASTAAAAAAAA LA 137
-                }
+                    //    DeshabilitarEntrada(false);
+                    //    string laRespuesta = "";
+                    //    //HASTAAAAAAAA LA 137
+                    //}
 
 
 
-                //25 de agosto -------------------
+                    //25 de agosto -------------------
 
-                //informa al cliente que la conexion fue exitosa 
-                escritor.Write("SERVIDOR>>> Conexion exitosa");
+                    //informa al cliente que la conexion fue exitosa 
+                    escritor.Write("SERVIDOR>>> Conexion exitosa");
 
-                //140
+                    //140
 
-                DeshabilitarEntrada(false); //habilita entradaTextBox
+                    DeshabilitarEntrada(false); //habilita entradaTextBox
 
-                string laRespuesta = "";
+                    string laRespuesta = "";
 
-                // Paso 4: lee los datos de cadena que envìa el cliente
-                do
-
-                {
-                    try
-                    {
-                        //lee la cadena que se envia al cliente
-                        laRespuesta = lector.ReadString();
-                        //muestra el mensaje
-                        MostrarMensaje("\r\n" + laRespuesta);
-                    } // fin de try
-
-                    //155
-
-                    catch (Exception)
+                    // Paso 4: lee los datos de cadena que envìa el cliente
+                    do
 
                     {
+                        try
+                        {
+                            //lee la cadena que se envia al cliente
+                            laRespuesta = lector.ReadString();
+                            //muestra el mensaje
+                            MostrarMensaje("\r\n" + laRespuesta);
+                        } // fin de try
 
-                        // maneja la excepcion si hay error al leer los datos
-                        break;
-                    } // fin de catch
-                } while (laRespuesta != "CLIENTE>>> TERMINAR" &&
-                conexion.Connected);
+                        //155
 
-                MostrarMensaje("\r\nE1 usuario termino la conexion\r\n");
+                        catch (Exception)
 
-                // Paso 5: cierra la conexion
-                escritor.Close();
-                lector.Close();
-                socketStream.Close();
-                conexion.Close();
+                        {
 
-                //171
+                            // maneja la excepcion si hay error al leer los datos
+                            break;
+                        } // fin de catch
+                    } while (laRespuesta != "CLIENTE>>> TERMINAR" &&
+                    conexion.Connected);
 
-                DeshabilitarEntrada(true); // deshabilita entradaTextBox
-                contador++;
-            } // fin de while
+                    MostrarMensaje("\r\nE1 usuario termino la conexion\r\n");
 
+                    // Paso 5: cierra la conexion
+                    escritor.Close();
+                    lector.Close();
+                    socketStream.Close();
+                    conexion.Close();
+
+                    //171
+
+                    DeshabilitarEntrada(true); // deshabilita entradaTextBox
+                    contador++;
+                }// fin de while
+            }
 
             catch (Exception error)
             {
