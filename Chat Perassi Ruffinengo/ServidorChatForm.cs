@@ -102,6 +102,33 @@ namespace Chat_Perassi_Ruffinengo
 
         //permite que el cliente se conecte; muestra el texto que envia el cliente
         //104
+
+        public static string ObtenerIPLocal()
+        {
+            string ipLocal = "No se pudo obtener la IP";
+
+            try
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+
+                foreach (var ip in host.AddressList)
+                {
+                    // Solo IPv4
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        ipLocal = ip.ToString();
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ipLocal = $"Error: {ex.Message}";
+            }
+
+            return ipLocal;
+        }
+
         public void EjecutarServidor()
         {
             TcpListener oyente;
@@ -111,7 +138,9 @@ namespace Chat_Perassi_Ruffinengo
             // que envia el cliente
             try
             {
+
                 //Paso 1: crea TcpListener
+                //192.168.100.19 HACER FUNC PARA OBTENER IP PROPIA
                 IPAddress local = IPAddress.Parse("127.0.0.1");
                 oyente = new TcpListener(local, 50000);
                 //Paso 2: TcpListener espera la solicitud de conexion
@@ -129,16 +158,8 @@ namespace Chat_Perassi_Ruffinengo
                     lector = new BinaryReader(socketStream);
 
                     MostrarMensaje("conexion " + contador + "recibida.\r\n");
-                    //    escritor.Write("SERVIDOR>>> Conexion exitosa");
-
-                    //    DeshabilitarEntrada(false);
-                    //    string laRespuesta = "";
-                    //    //HASTAAAAAAAA LA 137
-                    //}
 
 
-
-                    //25 de agosto -------------------
 
                     //informa al cliente que la conexion fue exitosa 
                     escritor.Write("SERVIDOR>>> Conexion exitosa");
@@ -181,7 +202,6 @@ namespace Chat_Perassi_Ruffinengo
                     socketStream.Close();
                     conexion.Close();
 
-                    //171
 
                     DeshabilitarEntrada(true); // deshabilita entradaTextBox
                     contador++;
@@ -193,32 +213,14 @@ namespace Chat_Perassi_Ruffinengo
                 MessageBox.Show(error.ToString());
             }
 
-            //private void textBox1_TextChanged(object sender, EventArgs e)
-            //    {
-
-            //    }
-
-            //    private void button1_Click_Click(object sender, EventArgs e)
-            //    {
-            //        mostrarTextbox.Text = entradaTextbox.Text.ToUpper();
-            //        label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-            //    }
-
-            //    private void button1_Click_1(object sender, EventArgs e)
-            //    {
-            //        if (mostrarTextbox.Text == "hola")
-            //        {
-            //            label1.Text = entradaTextbox.Text + " " + mostrarTextbox.Text;
-            //        }
-
-            //    }
-
-            //    private void Form1_Load(object sender, EventArgs e)
-            //    {
-
-            //    }
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string miIP = ObtenerIPLocal();
+            Console.WriteLine("Mi IP local es: " + miIP);
+            IPtextbox.Text = miIP;
+        }
     }
 }
 
