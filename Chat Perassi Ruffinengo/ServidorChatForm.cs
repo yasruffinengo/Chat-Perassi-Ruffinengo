@@ -19,10 +19,13 @@ namespace Chat_Perassi_Ruffinengo
         private NetworkStream socketStream; // stream cadena de datos
         private BinaryWriter escritor;
         private BinaryReader lector;
+        string miIP = "";
 
         // _load el _ indica que es un evento
         private void ServidorChatForm_Load(object sender, EventArgs e)
         {
+            miIP = ObtenerIPLocal();
+            IPtextbox.Text = miIP;
             lecturaThread = new Thread(new ThreadStart( EjecutarServidor ));
             lecturaThread.Start();
         }
@@ -141,7 +144,7 @@ namespace Chat_Perassi_Ruffinengo
 
                 //Paso 1: crea TcpListener
                 //192.168.100.19 HACER FUNC PARA OBTENER IP PROPIA
-                IPAddress local = IPAddress.Parse("127.0.0.1");
+                IPAddress local = IPAddress.Parse(miIP);
                 oyente = new TcpListener(local, 50000);
                 //Paso 2: TcpListener espera la solicitud de conexion
                 oyente.Start();

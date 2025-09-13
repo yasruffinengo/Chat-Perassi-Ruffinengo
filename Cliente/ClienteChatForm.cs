@@ -28,8 +28,8 @@ namespace Cliente
 
         private void ClienteChatForm_Load(object sender, EventArgs e)
         {
-            lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
-            lecturaThread.Start();
+            //lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
+            //lecturaThread.Start();
         }
 
         //cierra todos los subprocesos asociados con esta aplicacion
@@ -91,7 +91,7 @@ namespace Cliente
             {
                 MostrarMensaje("Tratando de conectar\r\n");
                 cliente = new TcpClient();
-                cliente.Connect("127.0.0.1", 50000);
+                cliente.Connect(this.IPtextbox.Text, 50000);
 
                 salida = cliente.GetStream();
 
@@ -127,6 +127,12 @@ namespace Cliente
                 MessageBox.Show(error.ToString(), "Error en la conexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 System.Environment.Exit(System.Environment.ExitCode);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
+            lecturaThread.Start();
         }
     }
 }

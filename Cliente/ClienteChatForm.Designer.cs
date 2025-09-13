@@ -40,6 +40,8 @@ namespace Cliente
         {
             this.entradaTextbox = new System.Windows.Forms.TextBox();
             this.mostrarTextbox = new System.Windows.Forms.TextBox();
+            this.IPtextbox = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // entradaTextbox
@@ -65,11 +67,30 @@ namespace Cliente
             this.mostrarTextbox.Size = new System.Drawing.Size(667, 161);
             this.mostrarTextbox.TabIndex = 3;
             // 
+            // IPtextbox
+            // 
+            this.IPtextbox.Location = new System.Drawing.Point(307, 323);
+            this.IPtextbox.Name = "IPtextbox";
+            this.IPtextbox.Size = new System.Drawing.Size(141, 23);
+            this.IPtextbox.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(470, 307);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(126, 53);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Conectar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ClienteChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.IPtextbox);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.entradaTextbox);
             this.Controls.Add(this.mostrarTextbox);
             this.Name = "ClienteChatForm";
@@ -85,5 +106,7 @@ namespace Cliente
 
         private System.Windows.Forms.TextBox entradaTextbox;
         private System.Windows.Forms.TextBox mostrarTextbox;
+        private TextBox IPtextbox;
+        private Button button1;
     }
 }
