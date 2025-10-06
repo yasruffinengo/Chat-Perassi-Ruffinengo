@@ -94,7 +94,7 @@ namespace Chat_Perassi_Ruffinengo
                     if (entradaTextbox.Text == "TERMINAR")
                         conexion.Close();
 
-                    entradaTextbox.Clear(); // borra la entrada del usuario
+                    entradaTextbox.Text = ""; // borra la entrada del usuario
                 } // fin de if
             }// fin de try
             catch (SocketException)
@@ -182,7 +182,8 @@ namespace Chat_Perassi_Ruffinengo
                             //lee la cadena que se envia al cliente
                             laRespuesta = lector.ReadString();
                             //muestra el mensaje
-                            MostrarMensaje("\r\n" + laRespuesta);
+                            //MostrarMensaje("\r\n" + laRespuesta);
+                            MostrarMensaje(laRespuesta);
                         } // fin de try
 
                         //155

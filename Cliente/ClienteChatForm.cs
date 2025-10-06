@@ -134,6 +134,11 @@ namespace Cliente
             lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
             lecturaThread.Start();
         }
+
+        private void entradaTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
