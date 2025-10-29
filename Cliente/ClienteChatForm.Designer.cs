@@ -38,73 +38,74 @@ namespace Cliente
         /// </summary>
         private void InitializeComponent()
         {
-            this.entradaTextbox = new System.Windows.Forms.TextBox();
-            this.mostrarTextbox = new System.Windows.Forms.TextBox();
-            this.IPtextbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            entradaTextbox = new TextBox();
+            mostrarTextbox = new TextBox();
+            IPtextbox = new TextBox();
+            button1 = new Button();
+            SuspendLayout();
             // 
             // entradaTextbox
             // 
-            this.entradaTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.entradaTextbox.Location = new System.Drawing.Point(96, 292);
-            this.entradaTextbox.Multiline = true;
-            this.entradaTextbox.Name = "entradaTextbox";
-            this.entradaTextbox.Size = new System.Drawing.Size(667, 39);
-            this.entradaTextbox.TabIndex = 2;
-            this.entradaTextbox.TextChanged += new System.EventHandler(this.entradaTextbox_TextChanged);
-            this.entradaTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.entradaTextBox_KeyDown);
+            entradaTextbox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            entradaTextbox.Location = new System.Drawing.Point(110, 389);
+            entradaTextbox.Margin = new Padding(3, 4, 3, 4);
+            entradaTextbox.Name = "entradaTextbox";
+            entradaTextbox.Size = new System.Drawing.Size(762, 27);
+            entradaTextbox.TabIndex = 2;
+            entradaTextbox.TextChanged += entradaTextbox_TextChanged;
+            entradaTextbox.KeyDown += entradaTextBox_KeyDown;
             // 
             // mostrarTextbox
             // 
-            this.mostrarTextbox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mostrarTextbox.Location = new System.Drawing.Point(96, 34);
-            this.mostrarTextbox.Multiline = true;
-            this.mostrarTextbox.Name = "mostrarTextbox";
-            this.mostrarTextbox.Size = new System.Drawing.Size(667, 252);
-            this.mostrarTextbox.TabIndex = 3;
+            mostrarTextbox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            mostrarTextbox.Location = new System.Drawing.Point(110, 45);
+            mostrarTextbox.Margin = new Padding(3, 4, 3, 4);
+            mostrarTextbox.Multiline = true;
+            mostrarTextbox.Name = "mostrarTextbox";
+            mostrarTextbox.ReadOnly = true;
+            mostrarTextbox.Size = new System.Drawing.Size(762, 335);
+            mostrarTextbox.TabIndex = 3;
             // 
             // IPtextbox
             // 
-            this.IPtextbox.Location = new System.Drawing.Point(96, 381);
-            this.IPtextbox.Name = "IPtextbox";
-            this.IPtextbox.Size = new System.Drawing.Size(141, 23);
-            this.IPtextbox.TabIndex = 8;
+            IPtextbox.Location = new System.Drawing.Point(110, 508);
+            IPtextbox.Margin = new Padding(3, 4, 3, 4);
+            IPtextbox.Name = "IPtextbox";
+            IPtextbox.Size = new System.Drawing.Size(161, 27);
+            IPtextbox.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.LavenderBlush;
-            this.button1.Cursor = System.Windows.Forms.Cursors.PanNW;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.HotPink;
-            this.button1.Location = new System.Drawing.Point(637, 351);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 53);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Conectar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.BackColor = System.Drawing.Color.LavenderBlush;
+            button1.Cursor = Cursors.PanNW;
+            button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            button1.ForeColor = System.Drawing.Color.HotPink;
+            button1.Location = new System.Drawing.Point(728, 468);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(144, 71);
+            button1.TabIndex = 7;
+            button1.Text = "Conectar";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // ClienteChatForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Cliente.Properties.Resources.tulip;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.IPtextbox);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.entradaTextbox);
-            this.Controls.Add(this.mostrarTextbox);
-            this.Name = "ClienteChatForm";
-            this.Text = "Cliente";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClienteChatForm_FormClosing);
-            this.Load += new System.EventHandler(this.ClienteChatForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.tulip;
+            ClientSize = new System.Drawing.Size(914, 600);
+            Controls.Add(IPtextbox);
+            Controls.Add(button1);
+            Controls.Add(entradaTextbox);
+            Controls.Add(mostrarTextbox);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "ClienteChatForm";
+            Text = "Cliente";
+            FormClosing += ClienteChatForm_FormClosing;
+            Load += ClienteChatForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

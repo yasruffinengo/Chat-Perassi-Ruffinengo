@@ -26,7 +26,7 @@ namespace Chat_Perassi_Ruffinengo
         {
             miIP = ObtenerIPLocal();
             IPtextbox.Text = miIP;
-            lecturaThread = new Thread(new ThreadStart( EjecutarServidor ));
+            lecturaThread = new Thread(new ThreadStart(EjecutarServidor));
             lecturaThread.Start();
         }
 
@@ -50,7 +50,8 @@ namespace Chat_Perassi_Ruffinengo
                     new object[] { mensaje });
             }
             else
-                mostrarTextbox.Text += mensaje;
+                mostrarTextbox.AppendText(mensaje + Environment.NewLine);
+
         }
 
 
@@ -85,9 +86,13 @@ namespace Chat_Perassi_Ruffinengo
             {
                 if (e.KeyCode == Keys.Enter && entradaTextbox.ReadOnly == false)
                 {
+                    //nuevo
+                    e.SuppressKeyPress = true;
 
                     escritor.Write("SERVIDOR>>> " + entradaTextbox.Text);
-                    mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox.Text;
+                    mostrarTextbox.AppendText("SERVIDOR>>> " + entradaTextbox.Text + Environment.NewLine);
+
+                    //mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox.Text;
 
                     //SI EL USUARIO EN EL SERVIDOR INDICO LA TERMINACION
                     //DE LA CONEXION CON EL CLIENTE
@@ -224,6 +229,11 @@ namespace Chat_Perassi_Ruffinengo
             string miIP = ObtenerIPLocal();
             Console.WriteLine("Mi IP local es: " + miIP);
             IPtextbox.Text = miIP;
+        }
+
+        private void mostrarTextbox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

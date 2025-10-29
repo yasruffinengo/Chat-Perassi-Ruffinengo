@@ -65,6 +65,8 @@ namespace Cliente
             else
                 entradaTextbox.ReadOnly = valor;
         }
+
+
         private void entradaTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             try
