@@ -41,7 +41,7 @@ namespace Chat_Perassi_Ruffinengo
             button1.Cursor = System.Windows.Forms.Cursors.PanNW;
             button1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
             button1.ForeColor = System.Drawing.Color.HotPink;
-            button1.Location = new System.Drawing.Point(685, 485);
+            button1.Location = new System.Drawing.Point(556, 489);
             button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(144, 71);
@@ -53,28 +53,29 @@ namespace Chat_Perassi_Ruffinengo
             // mostrarTextbox
             // 
             mostrarTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            mostrarTextbox.Location = new System.Drawing.Point(66, 51);
+            mostrarTextbox.Location = new System.Drawing.Point(31, 48);
             mostrarTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             mostrarTextbox.Multiline = true;
             mostrarTextbox.Name = "mostrarTextbox";
             mostrarTextbox.ReadOnly = true;
-            mostrarTextbox.Size = new System.Drawing.Size(762, 335);
+            mostrarTextbox.Size = new System.Drawing.Size(849, 384);
             mostrarTextbox.TabIndex = 6;
             mostrarTextbox.TextChanged += mostrarTextbox_TextChanged;
             // 
             // entradaTextbox
             // 
             entradaTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            entradaTextbox.Location = new System.Drawing.Point(66, 408);
+            entradaTextbox.Location = new System.Drawing.Point(31, 450);
             entradaTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             entradaTextbox.Name = "entradaTextbox";
-            entradaTextbox.Size = new System.Drawing.Size(762, 27);
+            entradaTextbox.Size = new System.Drawing.Size(849, 27);
             entradaTextbox.TabIndex = 7;
+            entradaTextbox.TextChanged += entradaTextbox_TextChanged;
             entradaTextbox.KeyDown += entradaTextBox_KeyDown;
             // 
             // IPtextbox
             // 
-            IPtextbox.Location = new System.Drawing.Point(66, 507);
+            IPtextbox.Location = new System.Drawing.Point(728, 513);
             IPtextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             IPtextbox.Name = "IPtextbox";
             IPtextbox.ReadOnly = true;

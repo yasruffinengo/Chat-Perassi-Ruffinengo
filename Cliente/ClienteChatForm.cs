@@ -45,13 +45,14 @@ namespace Cliente
         {
             if (mostrarTextbox.InvokeRequired)
             {
-                Invoke(new DisplayDelegate(MostrarMensaje), new object[] { mensaje });
-
+                Invoke(new DisplayDelegate(MostrarMensaje), new object[] { menssaje });
             }
             else
-            
-                mostrarTextbox.Text += mensaje;
+            {
+                mostrarTextbox.AppendText(menssaje + Environment.NewLine);
             }
+        }
+
 
         private delegate void DisableInputDelegate(bool value);
             
@@ -74,7 +75,7 @@ namespace Cliente
                 if (e.KeyCode == Keys.Enter && entradaTextbox.ReadOnly == false)
                 {
                     escritor.Write("CLIENTE>>>" + entradaTextbox.Text);
-                    mostrarTextbox.Text += "\r\nCLIENTE>>>" + entradaTextbox.Text;
+                    mostrarTextbox.AppendText("CLIENTE>>> " + entradaTextbox.Text + Environment.NewLine);
                     entradaTextbox.Clear();
                 }
             }

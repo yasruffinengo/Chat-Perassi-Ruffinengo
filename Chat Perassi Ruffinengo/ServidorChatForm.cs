@@ -46,8 +46,7 @@ namespace Chat_Perassi_Ruffinengo
             if (mostrarTextbox.InvokeRequired)
             {
 
-                Invoke(new DisplayDelegate(MostrarMensaje),
-                    new object[] { mensaje });
+                Invoke(new DisplayDelegate(MostrarMensaje), new object[] { mensaje });
             }
             else
                 mostrarTextbox.AppendText(mensaje + Environment.NewLine);
@@ -67,9 +66,7 @@ namespace Chat_Perassi_Ruffinengo
                 //usa el metodo heredado Invoke para ejecutar DeshabilitandoEntrada 
                 //a traves de un delegado
 
-                Invoke(new DisableInputDelegate(DeshabilitarEntrada),
-
-                   new object[] { valor });
+                Invoke(new DisableInputDelegate(DeshabilitarEntrada), new object[] { valor });
             } // fin de if
 
             else
@@ -232,6 +229,11 @@ namespace Chat_Perassi_Ruffinengo
         }
 
         private void mostrarTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void entradaTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }
