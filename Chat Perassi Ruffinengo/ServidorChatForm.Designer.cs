@@ -30,9 +30,9 @@ namespace Chat_Perassi_Ruffinengo
         private void InitializeComponent()
         {
             button1 = new System.Windows.Forms.Button();
-            mostrarTextbox = new System.Windows.Forms.TextBox();
             entradaTextbox = new System.Windows.Forms.TextBox();
             IPtextbox = new System.Windows.Forms.TextBox();
+            mostrarTextbox = new System.Windows.Forms.RichTextBox();
             SuspendLayout();
             // 
             // button1
@@ -49,18 +49,6 @@ namespace Chat_Perassi_Ruffinengo
             button1.Text = "Obtener Ip";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click_1;
-            // 
-            // mostrarTextbox
-            // 
-            mostrarTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            mostrarTextbox.Location = new System.Drawing.Point(31, 48);
-            mostrarTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            mostrarTextbox.Multiline = true;
-            mostrarTextbox.Name = "mostrarTextbox";
-            mostrarTextbox.ReadOnly = true;
-            mostrarTextbox.Size = new System.Drawing.Size(849, 384);
-            mostrarTextbox.TabIndex = 6;
-            mostrarTextbox.TextChanged += mostrarTextbox_TextChanged;
             // 
             // entradaTextbox
             // 
@@ -82,15 +70,23 @@ namespace Chat_Perassi_Ruffinengo
             IPtextbox.Size = new System.Drawing.Size(161, 27);
             IPtextbox.TabIndex = 9;
             // 
+            // mostrarTextbox
+            // 
+            mostrarTextbox.Location = new System.Drawing.Point(31, 30);
+            mostrarTextbox.Name = "mostrarTextbox";
+            mostrarTextbox.Size = new System.Drawing.Size(849, 388);
+            mostrarTextbox.TabIndex = 10;
+            mostrarTextbox.Text = "";
+            // 
             // ServidorChatForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.flll;
             ClientSize = new System.Drawing.Size(914, 600);
+            Controls.Add(mostrarTextbox);
             Controls.Add(IPtextbox);
             Controls.Add(entradaTextbox);
-            Controls.Add(mostrarTextbox);
             Controls.Add(button1);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "ServidorChatForm";
@@ -104,9 +100,9 @@ namespace Chat_Perassi_Ruffinengo
 
         #endregion
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox mostrarTextbox;
         private System.Windows.Forms.TextBox entradaTextbox;
         private System.Windows.Forms.TextBox IPtextbox;
+        private System.Windows.Forms.RichTextBox mostrarTextbox;
     }
 }
 

@@ -31,6 +31,15 @@ namespace Cliente
             //lecturaThread = new Thread(new ThreadStart(EjecutarCliente));
             //lecturaThread.Start();
         }
+        private void AgregarLineaColor(string texto, Color color)
+        {
+            mostrarTextbox.SelectionStart = mostrarTextbox.TextLength;
+            mostrarTextbox.SelectionLength = 0;
+
+            mostrarTextbox.SelectionColor = color;
+            mostrarTextbox.AppendText(texto + Environment.NewLine);
+            mostrarTextbox.SelectionColor = mostrarTextbox.ForeColor;
+        }
 
         //cierra todos los subprocesos asociados con esta aplicacion
         private void ClienteChatForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,7 +58,9 @@ namespace Cliente
             }
             else
             {
-                mostrarTextbox.AppendText(menssaje + Environment.NewLine);
+                //mostrarTextbox.AppendText(menssaje + Environment.NewLine);
+                AgregarLineaColor(menssaje, Color.BlueViolet);
+
             }
         }
 
@@ -75,7 +86,9 @@ namespace Cliente
                 if (e.KeyCode == Keys.Enter && entradaTextbox.ReadOnly == false)
                 {
                     escritor.Write("CLIENTE>>>" + entradaTextbox.Text);
-                    mostrarTextbox.AppendText("CLIENTE>>> " + entradaTextbox.Text + Environment.NewLine);
+                    //mostrarTextbox.AppendText("CLIENTE>>> " + entradaTextbox.Text + Environment.NewLine);
+                    AgregarLineaColor("CLIENTE>>> " + entradaTextbox.Text, Color.Green);
+
                     entradaTextbox.Clear();
                 }
             }

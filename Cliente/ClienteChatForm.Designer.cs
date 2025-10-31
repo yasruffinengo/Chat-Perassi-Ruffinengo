@@ -39,9 +39,9 @@ namespace Cliente
         private void InitializeComponent()
         {
             entradaTextbox = new TextBox();
-            mostrarTextbox = new TextBox();
             IPtextbox = new TextBox();
             button1 = new Button();
+            mostrarTextbox = new RichTextBox();
             SuspendLayout();
             // 
             // entradaTextbox
@@ -54,17 +54,6 @@ namespace Cliente
             entradaTextbox.TabIndex = 2;
             entradaTextbox.TextChanged += entradaTextbox_TextChanged;
             entradaTextbox.KeyDown += entradaTextBox_KeyDown;
-            // 
-            // mostrarTextbox
-            // 
-            mostrarTextbox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            mostrarTextbox.Location = new System.Drawing.Point(47, 45);
-            mostrarTextbox.Margin = new Padding(3, 4, 3, 4);
-            mostrarTextbox.Multiline = true;
-            mostrarTextbox.Name = "mostrarTextbox";
-            mostrarTextbox.ReadOnly = true;
-            mostrarTextbox.Size = new System.Drawing.Size(825, 375);
-            mostrarTextbox.TabIndex = 3;
             // 
             // IPtextbox
             // 
@@ -89,16 +78,24 @@ namespace Cliente
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // mostrarTextbox
+            // 
+            mostrarTextbox.Location = new System.Drawing.Point(47, 31);
+            mostrarTextbox.Name = "mostrarTextbox";
+            mostrarTextbox.Size = new System.Drawing.Size(825, 389);
+            mostrarTextbox.TabIndex = 9;
+            mostrarTextbox.Text = "";
+            // 
             // ClienteChatForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.tulip;
             ClientSize = new System.Drawing.Size(914, 600);
+            Controls.Add(mostrarTextbox);
             Controls.Add(IPtextbox);
             Controls.Add(button1);
             Controls.Add(entradaTextbox);
-            Controls.Add(mostrarTextbox);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ClienteChatForm";
             Text = "Cliente";
@@ -112,8 +109,8 @@ namespace Cliente
         #endregion
 
         private System.Windows.Forms.TextBox entradaTextbox;
-        private System.Windows.Forms.TextBox mostrarTextbox;
         private TextBox IPtextbox;
         private Button button1;
+        private RichTextBox mostrarTextbox;
     }
 }

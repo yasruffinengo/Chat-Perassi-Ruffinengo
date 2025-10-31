@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Threading;
+using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.IO;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Chat_Perassi_Ruffinengo
 {
@@ -30,6 +31,17 @@ namespace Chat_Perassi_Ruffinengo
             lecturaThread.Start();
         }
 
+        private void AgregarLineaColor(string texto, Color color)
+        {
+            mostrarTextbox.SelectionStart = mostrarTextbox.TextLength;
+            mostrarTextbox.SelectionLength = 0;
+
+            mostrarTextbox.SelectionColor = color;
+            mostrarTextbox.AppendText(texto + Environment.NewLine);
+            mostrarTextbox.SelectionColor = mostrarTextbox.ForeColor;
+        }
+
+
         //hoy 18/8
         //este evento se ejecuta desde que se hace el click de cerrar hasta que se termina de cerrar el form
         private void ServidorChatForm_FormClosing(object sander,
@@ -49,7 +61,9 @@ namespace Chat_Perassi_Ruffinengo
                 Invoke(new DisplayDelegate(MostrarMensaje), new object[] { mensaje });
             }
             else
-                mostrarTextbox.AppendText(mensaje + Environment.NewLine);
+                //mostrarTextbox.AppendText(mensaje + Environment.NewLine);
+                AgregarLineaColor(mensaje, Color.BlueViolet);
+
 
         }
 
@@ -87,9 +101,10 @@ namespace Chat_Perassi_Ruffinengo
                     e.SuppressKeyPress = true;
 
                     escritor.Write("SERVIDOR>>> " + entradaTextbox.Text);
-                    mostrarTextbox.AppendText("SERVIDOR>>> " + entradaTextbox.Text + Environment.NewLine);
+                    //mostrarTextbox.AppendText("SERVIDOR>>> " + entradaTextbox.Text + Environment.NewLine);
 
-                    //mostrarTextbox.Text += "\r\nSERVIDOR>>> " + entradaTextbox.Text;
+                    AgregarLineaColor("SERVIDOR>>> " + entradaTextbox.Text, Color.Blue);
+
 
                     //SI EL USUARIO EN EL SERVIDOR INDICO LA TERMINACION
                     //DE LA CONEXION CON EL CLIENTE
